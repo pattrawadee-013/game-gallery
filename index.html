@@ -14,7 +14,6 @@ margin: 0;
 background-color: #121212;
 color: #ffffff;
 }
-/* ส่วนหัวเว็บ (Header) */
 header {
 background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
 text-align: center;
@@ -29,8 +28,6 @@ margin: 10px 0 0;
 font-size: 16px;
 opacity: 0.9;
 }
-
-/* ปุ่มกรองหมวดหมู่ (Filter Buttons) */
 .filter-container {
 text-align: center;
 margin: 30px 10px;
@@ -46,7 +43,6 @@ cursor: pointer;
 font-size: 16px;
 transition: all 0.3s ease;
 }
-/* ลูกเล่น Hover Effect ตอนเอาเมาส์ชี้ปุ่ม */
 .filter-btn:hover {
 background-color: #2575fc;
 border-color: #2575fc;
@@ -56,8 +52,6 @@ transform: translateY(-2px);
 background-color: #6a11cb;
 border-color: #6a11cb;
 }
-
-/* จัดเรียงการ์ดด้วย CSS Grid และรองรับมือถือ (Responsive) */
 .gallery-grid {
 display: grid;
 grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -66,19 +60,20 @@ max-width: 1100px;
 margin: 0 auto 50px;
 padding: 0 20px;
 }
-
-/* ตกแต่งการ์ดข้อมูล */
+/* ทำให้การ์ดเป็นลิงก์ที่กดได้และไม่มีเส้นใต้ข้อความ */
 .card {
+display: block;
+text-decoration: none;
+color: inherit;
 background-color: #1e1e1e;
 border-radius: 12px;
 overflow: hidden;
 box-shadow: 0 4px 15px rgba(0,0,0,0.4);
 transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-/* ลูกเล่น Hover Effect ตอนเอาเมาส์ชี้การ์ด */
 .card:hover {
 transform: translateY(-8px);
-box-shadow: 0 8px 25px rgba(37, 117, 252, 0.4);
+box-shadow: 0 8px 25px rgba(37, 117, 252, 0.5);
 }
 .card img {
 width: 100%;
@@ -106,7 +101,13 @@ color: #bbb;
 font-size: 14px;
 line-height: 1.5;
 }
-/* คลาสสำหรับซ่อนการ์ดเมื่อกรองหมวดหมู่ */
+.click-hint {
+display: inline-block;
+margin-top: 15px;
+font-size: 13px;
+color: #6ab0ff;
+font-weight: bold;
+}
 .hide {
 display: none;
 }
@@ -116,83 +117,90 @@ display: none;
 
 <header>
 <h1>🎮 คลังเกมโปรดของ ภัทราวดี</h1>
-<p>รวบรวมเกมสนุกๆ ที่ชื่นชอบ แบ่งตามแนวเกมสามารถกดเลือกดูได้ด้านล่าง</p>
+<p>รวบรวมเกมสนุกๆ ที่ชื่นชอบ แบ่งตามแนวเกมสามารถกดเลือกดูและคลิกที่การ์ดเพื่อดูรายละเอียดเกมได้</p>
 </header>
 
-<!
--ปุ่มกรองหมวดหมู่ (4 ปุ่ม) -->
 <div class="filter-container">
 <button class="filter-btn active" onclick="filterGames('all', this)">ทั้งหมด</button>
 <button class="filter-btn" onclick="filterGames('simulation', this)">จำลองสถานการณ์</button>
 <button class="filter-btn" onclick="filterGames('rpg', this)">ผจญภัย RPG</button>
 <button class="filter-btn" onclick="filterGames('action', this)">แอคชั่น</button>
 </div>
-<!
--การ์ดข้อมูล 6 ชิ้น -->
+
 <div class="gallery-grid">
-<div class="card" data-category="simulation">
+<!
+-การ์ดที่ 1 -->
+<a href="https://www.ea.com/games/the-sims/the-sims-4&quot; target="_blank" class="card" data-category="simulation">
 <img src="https://images.unsplash.com/photo-1552820728-8b83bb6b773f?w=500&q=80&quot; alt="The Sims 4">
 <div class="card-content">
 <span class="tag">จำลองสถานการณ์</span>
 <h3>The Sims 4</h3>
 <p>เกมจำลองการใช้ชีวิต สร้างบ้าน แต่งตัว และวางแผนอนาคตตัวละครได้อย่างอิสระ</p>
+<span class="click-hint">คลิกเพื่อดูเว็บไซต์เกม ↗</span>
 </div>
-</div>
-<div class="card" data-category="rpg">
+</a>
+<!
+-การ์ดที่ 2 -->
+<a href="https://www.hogwartslegacy.com/&quot; target="_blank" class="card" data-category="rpg">
 <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=500&q=80&quot; alt="Hogwarts Legacy">
 <div class="card-content">
 <span class="tag">ผจญภัย RPG</span>
 <h3>Hogwarts Legacy</h3>
 <p>ออกสำรวจโรงเรียนเวทมนตร์ฮอกวอตส์ เรียนรู้คาถา และผจญภัยในโลกแห่งเวทมนตร์</p>
+<span class="click-hint">คลิกเพื่อดูเว็บไซต์เกม ↗</span>
 </div>
-</div>
-
-<div class="card" data-category="action">
+</a>
+<!
+-การ์ดที่ 3 -->
+<a href="https://playvalorant.com/&quot; target="_blank" class="card" data-category="action">
 <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=500&q=80&quot; alt="Valorant">
 <div class="card-content">
 <span class="tag">แอคชั่น</span>
 <h3>Valorant</h3>
 <p>เกมยิงปืนแนววางแผน 5v5 ที่ต้องอาศัยความแม่นยำและการใช้สกิลของตัวละคร</p>
+<span class="click-hint">คลิกเพื่อดูเว็บไซต์เกม ↗</span>
 </div>
-</div>
-
-<div class="card" data-category="rpg">
+</a>
+<!
+-การ์ดที่ 4 -->
+<a href="https://www.pokemon.com/&quot; target="_blank" class="card" data-category="rpg">
 <img src="https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?w=500&q=80&quot; alt="Pokemon">
 <div class="card-content">
 <span class="tag">ผจญภัย RPG</span>
 <h3>Pokémon</h3>
 <p>ออกเดินทางจับโปเกมอน ฝึกฝนคู่หู และตะลุยยิมเพื่อเป็นโปเกมอนมาสเตอร์</p>
+<span class="click-hint">คลิกเพื่อดูเว็บไซต์เกม ↗</span>
 </div>
-</div>
-
-<div class="card" data-category="simulation">
+</a>
+<!
+-การ์ดที่ 5 -->
+<a href="https://www.stardewvalley.net/&quot; target="_blank" class="card" data-category="simulation">
 <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=500&q=80&quot; alt="Stardew Valley">
 <div class="card-content">
 <span class="tag">จำลองสถานการณ์</span>
 <h3>Stardew Valley</h3>
 <p>เกมทำฟาร์มปลูกผัก เลี้ยงสัตว์ ตกปลา และใช้ชีวิตสโลว์ไลฟ์ในหมู่บ้านแสนอบอุ่น</p>
+<span class="click-hint">คลิกเพื่อดูเว็บไซต์เกม ↗</span>
 </div>
-</div>
-
-<div class="card" data-category="action">
+</a>
+<!
+-การ์ดที่ 6 -->
+<a href="https://www.cyberpunk.net/&quot; target="_blank" class="card" data-category="action">
 <img src="https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=500&q=80&quot; alt="Cyberpunk">
 <div class="card-content">
 <span class="tag">แอคชั่น</span>
 <h3>Cyberpunk 2077</h3>
 <p>ตะลุยเมืองแห่งอนาคตที่เต็มไปด้วยเทคโนโลยีไซเบอร์และภารกิจสุดมันส์</p>
+<span class="click-hint">คลิกเพื่อดูเว็บไซต์เกม ↗</span>
 </div>
+</a>
 </div>
-</div>
-
-<!
--สคริปต์ JavaScript สำหรับกดกรองหมวดหมู่ -->
 <script>
 function filterGames(category, button) {
-// เปลี่ยนสีปุ่มที่ถูกเลือก
 const buttons = document.querySelectorAll('.filter-btn');
 buttons.forEach(btn => btn.classList.remove('active'));
 button.classList.add('active');
-// กรองการ์ดเกมตามหมวดหมู่
+
 const cards = document.querySelectorAll('.card');
 cards.forEach(card => {
 const cardCategory = card.getAttribute('data-category');
